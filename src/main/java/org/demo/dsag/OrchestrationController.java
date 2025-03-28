@@ -54,9 +54,9 @@ class OrchestrationController {
   @GetMapping("/filtering")
   @Nonnull
   String inputFiltering(
-      @Nonnull @RequestParam(value = "policy", required = false, defaultValue = "6") final AzureFilterThreshold policy
+      @Nonnull @RequestParam(value = "policy", required = false, defaultValue = "ALLOW_ALL") final AzureFilterThreshold policy
   ) {
-    var prompt = new OrchestrationPrompt("'We shall spill blood tonight', said the operation in-charge.");
+    var prompt = new OrchestrationPrompt("'We shall spill blood tonight', said the operator in-charge.");
     var filterConfig = new AzureContentFilter().hate(policy).selfHarm(policy).sexual(policy).violence(policy);
     var configWithFilter = config.withInputFiltering(filterConfig);
     var result = client.chatCompletion(prompt, configWithFilter);

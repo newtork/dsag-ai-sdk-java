@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 import static com.sap.ai.sdk.orchestration.OrchestrationAiModel.GEMINI_1_5_FLASH;
-import static com.sap.ai.sdk.orchestration.OrchestrationAiModel.Parameter.TEMPERATURE;
+import static com.sap.ai.sdk.orchestration.OrchestrationAiModel.Parameter.MAX_TOKENS;
 
 @RestController
 @SuppressWarnings("unused")
@@ -28,7 +28,7 @@ class OrchestrationController {
   private final OrchestrationClient client = new OrchestrationClient();
 
   private final OrchestrationModuleConfig config =
-      new OrchestrationModuleConfig().withLlmConfig(GEMINI_1_5_FLASH.withParam(TEMPERATURE, 0.0));
+      new OrchestrationModuleConfig().withLlmConfig(GEMINI_1_5_FLASH.withParam(MAX_TOKENS, 1000));
 
   @GetMapping("/simple")
   String completion(
